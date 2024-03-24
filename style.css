@@ -1,0 +1,29 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+}
+form {
+  margin: 10vh 0 1vh 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+ul {
+  margin-top: 1vh;
+}
+#success-message {
+  position: absolute;
+  background-color: rgb(14 208 22 / 38%);
+  font-weight: bold;
+  text-align: center;
+  height: 30px;
+  width: 100%;
+  padding-top: 4px;
+}

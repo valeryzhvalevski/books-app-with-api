@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vite Form</title>
+</head>
+
+<body>
+  <div id="success-message" style="display: none;">
+    Данные успешно отправлены!
+  </div>
+  
+  <form id="myForm">
+    <label for="first-name">First name</label>
+    <input type="text" id="first-name" required>
+    <label for="last-name">Last name</label>
+    <input type="text" id="last-name" required>
+    <label for="email">Email</label>
+    <input type="email" id="email" required>
+  </form>
+  <button id="sendButton" type="submit">Send</button>
+  <ul id="dataList"></ul>
+  <script type="module" src="/main.js"></script>
+</body>
+
+</html>
