@@ -18,12 +18,38 @@ form {
 ul {
   margin-top: 1vh;
 }
-#success-message {
-  position: absolute;
-  background-color: rgb(14 208 22 / 38%);
-  font-weight: bold;
-  text-align: center;
-  height: 30px;
+input {
   width: 100%;
-  padding-top: 4px;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+}
+
+button {
+  padding: 10px 75px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+a {
+  text-decoration: none;
+  margin-top: 40px;
+  padding: 12px 50px;
+  font-size: 16px;
+  background-color: #FF9800;
+  color: #fff;
+  border: none;
+}
+a:hover {
+  background-color: #86560e;
+}
+.to-log-btn{
+  padding: 12px 70px;
+
 }

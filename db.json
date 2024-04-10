@@ -1,5 +1,12 @@
 {
   "users": [
-
+    {
+      "id": "2dfb",
+      "firstName": "valery111",
+      "lastName": "zh1",
+      "email": "valery.zhvalevski@gmail.com",
+      "password": "wregegeg",
+      "login": false
+    }
   ]
 }

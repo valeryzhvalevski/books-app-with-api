@@ -1,0 +1,279 @@
+@import url("https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&display=swap");
+.tajawal-extralight {
+  font-family: "Tajawal", sans-serif;
+  font-weight: 200;
+  font-style: normal;
+}
+
+.tajawal-light {
+  font-family: "Tajawal", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.tajawal-regular {
+  font-family: "Tajawal", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.tajawal-medium {
+  font-family: "Tajawal", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.tajawal-bold {
+  font-family: "Tajawal", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.tajawal-extrabold {
+  font-family: "Tajawal", sans-serif;
+  font-weight: 800;
+  font-style: normal;
+}
+
+.tajawal-black {
+  font-family: "Tajawal", sans-serif;
+  font-weight: 900;
+  font-style: normal;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  padding: 15px;
+  font-family: "Tajawal", sans-serif;
+  /* position: relative; */
+}
+h2 {
+  margin: 35px 0 15px 0;
+}
+.book {
+  cursor: pointer;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+.book:hover {
+  background-color: #f0f0f0;
+}
+.book img {
+  width: 100px;
+  height: 152px;
+  margin-right: 10px;
+}
+.book-details {
+  flex-grow: 1;
+  width: 170px;
+}
+
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h2 {
+  text-align: center;
+}
+
+form {
+  margin-bottom: 20px;
+  width: 60%;
+}
+.material-symbols-outlined {
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #337AB7;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+.burger {
+  margin: 0 15px 0 0;
+}
+.header {
+  top: 0;
+  background-color: white;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 7px 15px 0 0px;
+  width: 100%;
+  height: 100px;
+}
+#searchResults {
+  flex-basis: 100%;
+}
+
+.book {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.book h3 {
+  margin-top: 0;
+}
+
+
+.top-books {
+  display: flex;
+  overflow-x: hidden;
+}
+
+.top-books .book {
+  width: 400px;
+  margin-right: 20px;
+  transition: transform 0.5s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.controls {
+  /* margin-top: 20px; */
+}
+
+button {
+  cursor: pointer;
+  margin: 6px 0 25px 0;
+}
+.authors {
+  position: relative;
+  overflow: hidden;
+  margin: 40px 0 60px 0;
+}
+#authors-list {
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  margin-right: 30px;
+}
+#authors-list-clone {
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  padding-left: 0;
+  margin: 0;
+  width: 105%;
+}
+
+.author-item {
+  cursor: pointer;
+  font-size: 33px;
+}
+
+#authors-list-clone {
+  position: absolute;
+  top: 0%;
+  left: 100%;
+}
+
+#genres {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  flex-direction: column;
+}
+.genre {
+  /* flex-basis: 45%; */
+  display: flex;
+  flex-direction: column;
+}
+
+#genres .book {
+  /* width: 400px; */
+  margin-right: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 250px;
+}
+#logoutButton {
+  width: 100%;
+  margin: 0;
+  height: 50px;
+}
+
+.add-to-favorites-btn {
+  background-color: #337AB7;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 6px 0 3px 0;
+}
+.add-to-favorites-btn.added {
+  background-color: green;
+}
+.none {
+  display: none;
+}
+#favorites-container {
+  position: absolute;
+  top: 52px;
+  height: 700px;
+  width: 800px;
+  background-color: rgb(248, 252, 252);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 12px;
+  justify-content: space-around;
+
+}
+#favorites-container img {
+    height: 150px;
+}
+#backdrop {
+  z-index: 2;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); 
+}
+.favorite-book p {
+    width: 120px;
+}
+#logoutButton {
+  background-color: #b7333c;
+}
