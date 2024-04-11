@@ -1,236 +1,72 @@
-// document.addEventListener("DOMContentLoaded", () => {
-//     const genres = document.querySelectorAll(".genre");
-//     const favoritesContainer = document.getElementById("favorites-container");
-//     const loader = document.getElementById("loader-main");
-//     const favorites = new Set(); 
+document.addEventListener("DOMContentLoaded", function() {
+    const genreContainer = document.getElementById("genre-container");
+    const genreContent = document.getElementById("genre-container__content");
+    const btnMore = document.getElementById("genre-container__btn-more");
 
-//     // const showLoader = () => {
-//     //     loader.style.display = "block"; // Показываем загрузчик
-//     // };
+    let start = 0; // Начальное значение индекса книги
+    const limit = 15; // Количество книг, которые будут загружены за раз
 
-//     // const hideLoader = () => {
-//     //     loader.style.display = "none"; // Скрываем загрузчик
-//     // };
+    // Функция для загрузки и отображения книг
+    function loadBooks() {
+        const genre = genreContainer.dataset.genre; // Получаем значение жанра из data-атрибута
+        btnMore.textContent = "Loading..."; // Изменяем текст кнопки на "Loading"
+        fetch(`https://openlibrary.org/subjects/${genre}.json?limit=${limit}&offset=${start}`)
+            .then(response => response.json())
+            .then(data => {
+                data.works.forEach(book => {
+                    const title = book.title;
+                    const coverId = book.cover_id ? book.cover_id : "default"; // Проверяем наличие обложки
+                    const coverUrl = `https://covers.openlibrary.org/b/id/${coverId}-M.jpg`;
+                    const link = `https://openlibrary.org${book.key}`; // Ссылка на книгу
 
-//     const addToFavorites = (book) => {
-//         const bookKey = book.key;
-//         const bookTitle = book.title;
-//         const button = event.target;
+                    // Создаем элементы для отображения книги
+                    const bookDiv = document.createElement("a");
+                    bookDiv.classList.add("book-genre");
+                    bookDiv.href = link;
+                    bookDiv.target = "_blank"; 
 
-//         if (!favorites.has(bookKey)) {
-//             favorites.add(bookKey);
+                    const bookTitle = document.createElement("h4");
+                    bookTitle.textContent = title;
 
-//             const favoriteBookElement = document.createElement("div");
-//             favoriteBookElement.classList.add("favorite-book");
+                    const bookCover = document.createElement("img");
+                    bookCover.src = coverUrl;
+                    bookCover.alt = title;
 
-//             const cover = document.createElement("img");
-//             cover.src = `https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg`;
-//             favoriteBookElement.appendChild(cover);
+                    bookDiv.appendChild(bookTitle);
+                    bookDiv.appendChild(bookCover);
 
-//             const title = document.createElement("p");
-//             title.textContent = bookTitle;
-//             favoriteBookElement.appendChild(title);
-
-//             favoritesContainer.appendChild(favoriteBookElement);
-
-//             button.textContent = "Добавлено в избранное";
-//             button.classList.add("added");
-//         }
-//     };
-
-//     genres.forEach((genre) => {
-//         const booksContainer = genre.querySelector(".books");
-//         const moreButton = genre.querySelector(".more-btn");
-//         let startIndex = 0; 
-//         let booksToAdd = 6; 
-
-//         // в контейнер
-//         const addBooks = (booksData) => {
-//             booksData.slice(0, booksToAdd).forEach((book) => {
-//                 const bookElement = document.createElement("div");
-//                 bookElement.classList.add("book");
-
-//                 const title = document.createElement("p");
-//                 title.textContent = book.title;
-//                 bookElement.appendChild(title);
-
-//                 if (book.cover_i) {
-//                     const coverUrl = `https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg`;
-//                     const cover = document.createElement("img");
-//                     cover.src = coverUrl;
-//                     bookElement.appendChild(cover);
-//                 } else {
-//                     const defaultCoverUrl = "book.jpg"; 
-//                     const defaultCover = document.createElement("img");
-//                     defaultCover.src = defaultCoverUrl;
-//                     bookElement.appendChild(defaultCover);
-//                 }
-
-//                 // в избранное
-//                 const addToFavoritesButton = document.createElement("button");
-//                 addToFavoritesButton.textContent = "Добавить в избранное";
-//                 addToFavoritesButton.classList.add("add-to-favorites-btn");
-//                 addToFavoritesButton.addEventListener("click", () => {
-//                     addToFavorites(book);
-//                 });
-//                 bookElement.appendChild(addToFavoritesButton);
-
-//                 bookElement.addEventListener("click", () => {
-//                     if (!event.target.classList.contains("add-to-favorites-btn")) {
-//                         window.location.href = `https://openlibrary.org${book.key}`;
-//                     }
-//                 });
-
-//                 booksContainer.appendChild(bookElement);
-//             });
-//         };
-
-//         // еще
-//         const loadMoreBooks = () => {
-//             fetch(`https://openlibrary.org/search.json?q=${encodeURIComponent(genre.id)}&limit=${booksToAdd}&offset=${startIndex}`)
-//                 .then((response) => {
-//                     if (!response.ok) {
-//                         throw new Error('Failed to fetch books');
-//                     }
-//                     return response.json();
-//                 })
-//                 .then((data) => {
-//                     if (data.docs && data.docs.length > 0) {
-//                         addBooks(data.docs);
-//                         startIndex += booksToAdd; 
-//                     } else {
-//                         moreButton.disabled = true; 
-//                         moreButton.textContent = "No more books";
-//                     }
-//                 })
-//                 .catch((error) => console.error("Error fetching books:", error));
-//         };
-
-//         moreButton.addEventListener("click", loadMoreBooks);
-
-//         loadMoreBooks();
-//     });
-// });
-
-
-
-document.addEventListener("DOMContentLoaded", () => {
-    const genres = document.querySelectorAll(".genre");
-    const favorites = new Set(); // Множество для хранения избранных книг
-    const favoritesContainer = document.getElementById("favorites-container");
-
-    genres.forEach((genre) => {
-        const booksContainer = genre.querySelector(".books");
-        const moreButton = genre.querySelector(".more-btn");
-
-        let startIndex = 0;
-        let booksToAdd = 4;
-
-        const addToFavorites = (book, event) => {
-            const bookKey = book.key;
-            const bookTitle = book.title;
-            const button = event.target;
-        
-            if (favorites.has(bookKey)) {
-                // Если книга уже в избранном, удаляем её
-                favorites.delete(bookKey);
-                // Удаляем соответствующий элемент из контейнера избранных книг
-                const favoriteBookElement = favoritesContainer.querySelector(`[data-key="${bookKey}"]`);
-                if (favoriteBookElement) {
-                    favoritesContainer.removeChild(favoriteBookElement);
-                }
-                button.textContent = "Добавить в избранное";
-                button.classList.remove("added");
-            } else {
-                // Если книга не в избранном, добавляем её
-                favorites.add(bookKey);
-        
-                const favoriteBookElement = document.createElement("div");
-                favoriteBookElement.classList.add("favorite-book");
-                favoriteBookElement.setAttribute("data-key", bookKey);
-        
-                const cover = document.createElement("img");
-                cover.src = `https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg`;
-                favoriteBookElement.appendChild(cover);
-        
-                const title = document.createElement("p");
-                title.textContent = bookTitle;
-                favoriteBookElement.appendChild(title);
-        
-                favoritesContainer.appendChild(favoriteBookElement);
-        
-                button.textContent = "Добавлено в избранное";
-                button.classList.add("added");
-            }
-        };
-        
-
-        const loadMoreBooks = () => {
-            const loader = document.getElementById("loader-main");
-            const mainContainer = document.querySelector('.container-main');
-            loader.style.display = "block"; // Показываем загрузчик
-            mainContainer.style.display = "none";
-            fetch(`https://openlibrary.org/search.json?q=${encodeURIComponent(genre.id)}&limit=${booksToAdd}&offset=${startIndex}`)
-                .then((response) => {
-                    if (!response.ok) {
-                        throw new Error('Failed to fetch books');
-                    }
-                    return response.json();
-                })
-                .then((data) => {
-                    loader.style.display = "none"; // Скрываем загрузчик
-                    mainContainer.style.display = "block";
-                    if (data.docs && data.docs.length > 0) {
-                        data.docs.forEach((book) => {
-                            const bookElement = document.createElement("div");
-                            bookElement.classList.add("book");
-
-                            const title = document.createElement("p");
-                            title.textContent = book.title;
-                            bookElement.appendChild(title);
-
-                            if (book.cover_i) {
-                                const coverUrl = `https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg`;
-                                const cover = document.createElement("img");
-                                cover.src = coverUrl;
-                                bookElement.appendChild(cover);
-                            } else {
-                                const defaultCoverUrl = "book.jpg";
-                                const defaultCover = document.createElement("img");
-                                defaultCover.src = defaultCoverUrl;
-                                bookElement.appendChild(defaultCover);
-                            }
-
-                            const addToFavoritesButton = document.createElement("button");
-                            addToFavoritesButton.textContent = "Добавить в избранное";
-                            addToFavoritesButton.classList.add("add-to-favorites-btn");
-                            addToFavoritesButton.addEventListener("click", (event) => {
-                                addToFavorites(book, event);
-                            });
-                            bookElement.appendChild(addToFavoritesButton);
-
-                            bookElement.addEventListener("click", () => {
-                                if (!event.target.classList.contains("add-to-favorites-btn")) {
-                                    window.location.href = `https://openlibrary.org${book.key}`;
-                                }
-                            });
-
-                            booksContainer.appendChild(bookElement);
-                        });
-                        startIndex += booksToAdd;
-                    } else {
-                        moreButton.disabled = true;
-                        moreButton.textContent = "No more books";
-                    }
-                })
-                .catch((error) => {
-                    loader.style.display = "none"; // Скрываем загрузчик в случае ошибки
-                    console.error("Error fetching books:", error);
+                    genreContent.appendChild(bookDiv);
                 });
-        };
+                btnMore.textContent = "More"; // Возвращаем исходный текст кнопки после загрузки
+            })
+            .catch(error => {
+                console.error("Error loading books:", error);
+                btnMore.textContent = "More"; // Возвращаем исходный текст кнопки в случае ошибки
+            });
+        
+        start += limit; // Увеличиваем начальное значение индекса для загрузки следующих книг
+    }
 
-        moreButton.addEventListener("click", loadMoreBooks);
+    // Событие при клике на кнопку "More"
+    btnMore.addEventListener("click", function() {
+        loadBooks();
+    });
 
-        loadMoreBooks();
+    // Функция для отображения контента по выбранному жанру
+    function showGenreContent(genre) {
+        genreContainer.style.display = "block";
+        genreContent.innerHTML = ""; // Очищаем контент при смене жанра
+        genreContainer.dataset.genre = genre; // Устанавливаем значение жанра в data-атрибут
+        start = 0; // Сбрасываем значение начального индекса
+        loadBooks(); // Загружаем книги
+    }
+
+    // Событие при клике на жанр
+    const genres = document.querySelectorAll(".genre");
+    genres.forEach(genre => {
+        genre.addEventListener("click", function() {
+            const selectedGenre = this.id;
+            showGenreContent(selectedGenre);
+        });
     });
 });
