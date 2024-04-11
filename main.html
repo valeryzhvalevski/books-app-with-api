@@ -8,7 +8,9 @@
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <link rel="stylesheet" href="./main-style.css">
     <link rel="stylesheet" href="./loader.css">
+    <link rel="stylesheet" href="./loader-else.css">
     <link rel="stylesheet" href="./upBtn.css">
+    <link rel="stylesheet" href="./button-next.css">
     <script type="module" defer src="/topBooks.js"></script>
     <script type="module" defer src="/topAuthors.js"></script>
     <script type="module" defer src="/genres.js"></script>
@@ -17,6 +19,7 @@
 </head>
 
 <body>
+    <!-- <span class="loader-else" id="loader-else"></span> -->
     <div class="loader" id="loader-main">
         <div class="book__pg-shadow"></div>
         <div class="book__pg"></div>
@@ -27,74 +30,84 @@
     </div>
 
     <div class="container-main">
-
-        <div class="header">
-            <form id="searchForm">
-                <input type="text" id="searchInput" placeholder="Enter search term">
-                <button type="submit">Search</button>
-                <button type="button" id="clearResultsButton">Clear Search Results</button>
-            </form>
-            <button class="burger"><span class="material-symbols-outlined">
-                    favorite
-                </span></button>
-
+        <div class="main-screen">
+            <div class="header">
+                <form id="searchForm">
+                    <input type="text" id="searchInput" placeholder="Enter search term">
+                    <button type="submit">Search</button>
+                    <button type="button" id="clearResultsButton">Clear Search Results</button>
+                </form>
+                <button class="burger"><span class="material-symbols-outlined">
+                        favorite
+                    </span></button>
+    
+            </div>
+            <div id="searchResults"></div>
+    
+            <h2 style="margin-top: 20px;">Top Books</h2>
+            <div class="top-books">
+            </div>
+            <div class="controls">
+                <button class="prev">Prev</button>
+                <button class="next">Next</button>
+            </div>
+    
+            <div class="authors">
+                <ul id="authors-list"></ul>
+                <ul id="authors-list-clone"></ul>
+            </div>
+    
+            <div class="wrap">
+                <a href="#genres-container-id" class="button-next">Перейти к жанрам</a>
+              </div>
         </div>
-        <div id="searchResults"></div>
 
-        <h2 style="margin-top: 120px;">Top Books</h2>
-        <div class="top-books">
+
+
+        <div class="genres-container" id="genres-container-id">
+            <h2>Жанры</h2>
+            <div id="genres">
+    
+                <div class="genre" id="fantasy">
+                    <h3>Фантастика</h3>
+                    <div class="books">
+                    </div>
+                    <button class="more-btn">Еще</button>
+                </div>
+                <div class="genre" id="detective">
+                    <h3>Детектив</h3>
+                    <div class="books">
+                    </div>
+                    <button class="more-btn">Еще</button>
+                </div>
+                <div class="genre" id="romance">
+                    <h3>Роман</h3>
+                    <div class="books">
+                    </div>
+                    <button class="more-btn">Еще</button>
+                </div>
+                <div class="genre" id="adventure">
+                    <h3>Приключения</h3>
+                    <div class="books">
+                    </div>
+                    <button class="more-btn">Еще</button>
+                </div>
+                <div class="genre" id="fantasy">
+                    <h3>Фэнтези</h3>
+                    <div class="books">
+                    </div>
+                    <button class="more-btn">Еще</button>
+                </div>
+                <div class="genre" id="historical">
+                    <h3>Исторический</h3>
+                    <div class="books">
+                    </div>
+                    <button class="more-btn">Еще</button>
+                </div>
+            </div>
+    
         </div>
-        <div class="controls">
-            <button class="prev">Prev</button>
-            <button class="next">Next</button>
-        </div>
 
-        <div class="authors">
-            <ul id="authors-list"></ul>
-            <ul id="authors-list-clone"></ul>
-
-        </div>
-
-        <h2>Жанры</h2>
-        <div id="genres">
-
-            <div class="genre" id="fantasy">
-                <h3>Фантастика</h3>
-                <div class="books">
-                </div>
-                <button class="more-btn">Еще</button>
-            </div>
-            <div class="genre" id="detective">
-                <h3>Детектив</h3>
-                <div class="books">
-                </div>
-                <button class="more-btn">Еще</button>
-            </div>
-            <div class="genre" id="romance">
-                <h3>Роман</h3>
-                <div class="books">
-                </div>
-                <button class="more-btn">Еще</button>
-            </div>
-            <div class="genre" id="adventure">
-                <h3>Приключения</h3>
-                <div class="books">
-                </div>
-                <button class="more-btn">Еще</button>
-            </div>
-            <div class="genre" id="fantasy">
-                <h3>Фэнтези</h3>
-                <div class="books">
-                </div>
-                <button class="more-btn">Еще</button>
-            </div>
-            <div class="genre" id="historical">
-                <h3>Исторический</h3>
-                <div class="books">
-                </div>
-                <button class="more-btn">Еще</button>
-            </div>
-        </div>
         <div id="favorites-container" style="display: none;">
         </div>
         <div id="backdrop" class="none"></div>
