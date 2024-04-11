@@ -51,6 +51,9 @@ body {
   font-family: "Tajawal", sans-serif;
   /* position: relative; */
 }
+html {
+  scroll-behavior: smooth;
+}
 h2 {
   margin: 35px 0 15px 0;
 }
@@ -130,7 +133,9 @@ button:hover {
 #searchResults {
   flex-basis: 100%;
 }
-
+.main-screen {
+  height: 100vh;
+}
 .book {
   border: 1px solid #ccc;
   padding: 10px;
@@ -212,9 +217,17 @@ button {
   display: flex;
   flex-direction: column;
 }
-
+.genre h3 {
+  margin-top: 20px;
+}
+.books {
+  display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+}
 #genres .book {
-  /* width: 400px; */
+  width: 30%;
   margin-right: 20px;
   display: flex;
   flex-direction: column;
@@ -222,6 +235,7 @@ button {
   justify-content: center;
   height: 250px;
 }
+
 #logoutButton {
   width: 100%;
   margin: 0;
