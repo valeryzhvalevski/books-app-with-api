@@ -18,7 +18,7 @@
 </head>
 
 <body>
-    <!-- <div class="loader" id="loader-main">
+    <div class="loader" id="loader-main">
         <div class="book__pg-shadow"></div>
         <div class="book__pg"></div>
         <div class="book__pg book__pg--2"></div>
@@ -28,7 +28,7 @@
     </div> -->
 
     <div class="container-main">
-        <!-- <div class="main-screen"> -->
+
         <div class="header">
             <form id="searchForm">
                 <input type="text" id="searchInput" placeholder="Enter search term">
@@ -42,7 +42,7 @@
         </div>
         <div id="searchResults"></div>
 
-        <h2 style="margin-top: 20px;">Top Books</h2>
+        <h2 style="margin-top: 120px;">Top Books</h2>
         <div class="top-books">
         </div>
         <div class="controls">
@@ -53,38 +53,47 @@
         <div class="authors">
             <ul id="authors-list"></ul>
             <ul id="authors-list-clone"></ul>
+
         </div>
 
-        <!-- <div class="wrap">
-                <a href="#genres-container-id" class="button-next">Перейти к жанрам</a>
-              </div> -->
-        <!-- </div> -->
+        <h2>Жанры</h2>
+        <div id="genres">
 
-
-
-        <div class="genres-container" id="genres-container-id">
-            <h2>Popular Genres</h2>
-            <div id="genres">
-                <div class="genre" id="fantasy">
-                    <h3 id="fantasy-title">Fantasy</h3>
+            <div class="genre" id="fantasy">
+                <h3>Фантастика</h3>
+                <div class="books">
                 </div>
-                <div class="genre" id="detective">
-                    <h3 id="detective-title">Detective</h3>
-                </div>
-                <div class="genre" id="romance">
-                    <h3 id="romance-title">Romance</h3>
-                </div>
-                <div class="genre" id="adventure">
-                    <h3 id="adventure-title">Adventure</h3>
-                </div>
-                <div class="genre" id="historical">
-                    <h3 id="historical-title">Historical</h3>
-                </div>
+                <button class="more-btn">Еще</button>
             </div>
-
-            <div id="genre-container" style="display: none;">
-                <div id="genre-container__content"></div>
-                <button id="genre-container__btn-more">More</button>
+            <div class="genre" id="detective">
+                <h3>Детектив</h3>
+                <div class="books">
+                </div>
+                <button class="more-btn">Еще</button>
+            </div>
+            <div class="genre" id="romance">
+                <h3>Роман</h3>
+                <div class="books">
+                </div>
+                <button class="more-btn">Еще</button>
+            </div>
+            <div class="genre" id="adventure">
+                <h3>Приключения</h3>
+                <div class="books">
+                </div>
+                <button class="more-btn">Еще</button>
+            </div>
+            <div class="genre" id="fantasy">
+                <h3>Фэнтези</h3>
+                <div class="books">
+                </div>
+                <button class="more-btn">Еще</button>
+            </div>
+            <div class="genre" id="historical">
+                <h3>Исторический</h3>
+                <div class="books">
+                </div>
+                <button class="more-btn">Еще</button>
             </div>
         </div>
         <div id="favorites-container" style="display: none;">
