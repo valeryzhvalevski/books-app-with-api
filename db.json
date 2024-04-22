@@ -1,12 +1,40 @@
 {
   "users": [
     {
-      "id": "2dfb",
-      "firstName": "valery111",
-      "lastName": "zh1",
-      "email": "valery.zhvalevski@gmail.com",
-      "password": "wregegeg",
+      "id": "0825",
+      "firstName": "new",
+      "lastName": "new",
+      "email": "new@new",
+      "password": "new",
+      "login": true
+    },
+    {
+      "id": "8d12",
+      "firstName": "new1",
+      "lastName": "new1new1",
+      "email": "new1@new1",
+      "password": "new1",
       "login": false
+    }
+  ],
+  "books": [
+    {
+      "id": "3bc4",
+      "title": "Gulliver's Travels",
+      "coverUrl": "https://covers.openlibrary.org/b/id/12717083-M.jpg",
+      "link": "https://openlibrary.org/works/OL20600W"
+    },
+    {
+      "id": "df5b",
+      "title": "Alice's Adventures in Wonderland",
+      "coverUrl": "https://covers.openlibrary.org/b/id/10527843-M.jpg",
+      "link": "https://openlibrary.org/works/OL138052W"
+    },
+    {
+      "id": "112f",
+      "title": "Death on the Nile",
+      "coverUrl": "https://covers.openlibrary.org/b/id/14066646-M.jpg",
+      "link": "https://openlibrary.org/works/OL471724W"
     }
   ]
 }

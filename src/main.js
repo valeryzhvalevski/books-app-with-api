@@ -38,10 +38,10 @@ async function sendData(event) {
       throw new Error("Failed to register user");
     }
 
-    alert("User registered successfully!");
     window.location.href = "./main.html"; 
   } catch (error) {
     console.error("Error registering user:", error);
-    alert("Failed to register user. Please try again later.");
   }
 }
+
+

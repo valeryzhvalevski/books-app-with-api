@@ -1,6 +1,3 @@
-
-
-
 document.addEventListener("DOMContentLoaded", () => {
   const sendButton = document.getElementById("sendButton");
   sendButton.addEventListener("click", login);
@@ -18,7 +15,9 @@ function login(event) {
       let isLoggedIn = false; 
       data.forEach((user) => {
         if (email === user.email && password === user.password) {
-          isLoggedIn = true; 
+          isLoggedIn = true;
+          user.login = true; 
+          updateUser(user); 
           window.location.href = "main.html";
           return;
         }
@@ -29,4 +28,20 @@ function login(event) {
       }
     })
     .catch((error) => console.error("Ошибка при входе:", error));
+}
+
+function updateUser(user) {
+  fetch(`http://localhost:3001/users/${user.id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(user)
+  })
+  .then((response) => {
+    if (!response.ok) {
+      throw new Error("Failed to update user data");
+    }
+  })
+  .catch((error) => console.error("Ошибка при обновлении данных пользователя:", error));
 }

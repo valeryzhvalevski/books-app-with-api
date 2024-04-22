@@ -123,6 +123,9 @@ button:hover {
   margin: 0 15px 0 0;
 }
 .container-main {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   height: 100vh;
 }
 .header {
@@ -137,7 +140,7 @@ button:hover {
   height: 100px;
 }
 #searchResults {
-  flex-basis: 100%;
+  /* flex-basis: 100%; */
 }
 .main-screen {
   height: 100vh;
@@ -177,7 +180,7 @@ button {
 .authors {
   position: relative;
   overflow: hidden;
-  margin: 40px 0 60px 0;
+  /* margin: 40px 0 60px 0; */
 }
 #authors-list {
   display: flex;
@@ -218,11 +221,27 @@ button {
   flex-basis: 24%;
   display: flex;
   flex-direction: column;
+  align-items: stretch;
+  justify-content: center;
 }
-
-#genres .book {
-  /* width: 400px; */
-  margin-right: 20px;
+.genre h3 {
+  padding: 10px 20px;
+  background-color: #337ab7;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.books {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-around;
+}
+ .book-genre {
+  width: 30%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -240,7 +259,6 @@ button {
   background-color: #f0f0f0;
 
 }
-
 #logoutButton {
   width: 100%;
   margin: 0;
@@ -276,6 +294,10 @@ button {
   gap: 12px;
   padding: 12px;
   justify-content: space-around;
+  overflow-y: scroll;
+}
+#favorites-container .book-genre {
+  height: 350px;
 }
 #favorites-container img {
   height: 150px;
@@ -293,6 +315,7 @@ button {
   width: 120px;
 }
 #logoutButton {
+  margin-top: 30px;
   background-color: #b7333c;
 }
 
@@ -303,17 +326,51 @@ button {
   margin-top: 17px;
 }
 .genre h3 {
+  height: 23vh;
   padding: 10px 20px;
   background-color: #337ab7;
   color: #fff;
   border: none;
   cursor: pointer;
+  transition: all 0.3s ease;
 }
 
-.genre h3:hover {
-  background-color: #0056b3;
+#fantasy-title:hover {
+  background-image: url('../img/fantasy.jpeg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  -webkit-text-stroke: 1px black;
 }
 
-.active {
-  background-color: #00b30f;
+#detective-title:hover {
+  background-image: url('../img/detective.jpeg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  -webkit-text-stroke: 1px black;
+}
+
+#romance-title:hover {
+  background-image: url('../img/romance.jpeg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  -webkit-text-stroke: 1px black;
+}
+
+#adventure-title:hover {
+  background-image: url('../img/adventure.jpeg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  -webkit-text-stroke: 1px black;
+}
+
+#historical-title:hover {
+  background-image: url('../img/historical.jpeg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  -webkit-text-stroke: 1px black;
 }

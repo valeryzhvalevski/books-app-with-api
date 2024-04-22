@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
       cloneListItems(authorsList, cloneList);
     });
   
-    // Непрерывная плавная прокрутка
+    // Непрерывная прокрутка
     let scrollPosition = 0;
     const scrollSpeed = 0.5; 
     function scrollList() {
